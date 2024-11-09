@@ -1,0 +1,9 @@
+*.class
+*.iml
+*.log
+target/
+.idea/
+.vscode/
+.allure/
+driver-instance/
+temp.feature
