@@ -16,6 +16,8 @@ import ru.ibsqa.chameleon.selenium.driver.configuration.IDriverConfigurationAppe
 
 import static com.browserup.bup.client.ClientUtil.createSeleniumProxy;
 
+import java.io.File;
+
 
 /**
  * Бины, имплементирующие интерфейс IDriverConfigurationAppender, могут быть использованы для точной настройки
@@ -36,6 +38,7 @@ public class MyDriverConfigurationAppender implements IDriverConfigurationAppend
     private final String windowsizeW = System.getProperty("windowsizeW", "1920");
     private final String windowsizeH = System.getProperty("windowsizeH", "1080");
     private final String url = System.getProperty("applicationUrl");
+    private final String addExtension = System.getProperty("addExtention", "");
     public static final BrowserUpProxyServer proxy = new BrowserUpProxyServer();
 
     @Override
@@ -45,6 +48,7 @@ public class MyDriverConfigurationAppender implements IDriverConfigurationAppend
             if (incognito) options.addArguments("incognito");
             if (ingnorecerterr) options.addArguments("ignore-certificate-errors");
             if (headless) options.addArguments("headless=new");
+             if (addExtension.length() > 1) options.addExtensions (new File(addExtension));
             options.addArguments("--no-sandbox", "--disable-dev-shm-usage");
             options.addArguments("window-size=" + windowsizeW + "," + windowsizeH);
 //            для решения ошибки загрузки файлов "Скачивание файла из незащищенного источника заблокировано":
