@@ -7,19 +7,17 @@ import ru.ibsqa.chameleon.evaluate.Evaluator;
 import ru.ibsqa.chameleon.storage.IVariableScope;
 
 /**
- * Случайный мобильный телефон.
- * Возвращается строка в формате +7 YYY XXX XXXX,
- * где YYY соответствует коду мобильного оператора.
+ * ИНН Юр лица
  */
 @Component
 @Evaluator({
-        "#datagenMobile{}"
+        "#datagenINN10{}"
 })
-public class DatagenMobile extends AbstractEvaluator {
+public class DatagenINN10 extends AbstractEvaluator {
 
     @Override
     protected String getPlaceHolderName() {
-        return "datagenMobile";
+        return "datagenINN10";
     }
 
     @Override
@@ -29,6 +27,7 @@ public class DatagenMobile extends AbstractEvaluator {
 
     @Override
     protected String evalExpression(IVariableScope variableScope, String... args) {
-        return DataGenerator.contacts().mobile().toString();
+        return DataGenerator.accountDetails().inn10();
     }
 }
+

@@ -5,13 +5,11 @@ import io.cucumber.core.internal.com.fasterxml.jackson.databind.JsonNode;
 import io.cucumber.core.internal.com.fasterxml.jackson.databind.ObjectMapper;
 import io.cucumber.java.DocStringType;
 import io.cucumber.java.ru.Дано;
-import io.cucumber.java.ru.Когда;
 import org.springframework.beans.factory.annotation.Autowired;
 import ru.ibsqa.chameleon.steps.AbstractSteps;
 import ru.ibsqa.chameleon.steps.StepDescription;
 import ru.ibsqa.chameleon.steps.roles.Value;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CustomProxyStorySteps extends AbstractSteps {
 
