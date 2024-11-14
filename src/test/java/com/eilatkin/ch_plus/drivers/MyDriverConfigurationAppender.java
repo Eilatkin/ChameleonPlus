@@ -46,7 +46,10 @@ public class MyDriverConfigurationAppender implements IDriverConfigurationAppend
         if (WebSupportedDriver.CHROME.equals(driverConfiguration.getDriverType())) {
             ChromeOptions options = new ChromeOptions();
             if (incognito) options.addArguments("incognito");
-            if (ingnorecerterr) options.addArguments("ignore-certificate-errors");
+            if (ingnorecerterr) {
+                options.addArguments("ignore-certificate-errors");
+                options.setCapability("acceptInsecureCerts", true);
+            }
             if (headless) options.addArguments("headless=new");
              if (addExtension.length() > 1) options.addExtensions (new File(addExtension));
             options.addArguments("--no-sandbox", "--disable-dev-shm-usage");

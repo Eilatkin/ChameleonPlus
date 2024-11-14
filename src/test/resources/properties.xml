@@ -16,8 +16,12 @@
     <Text name="windowsizeW" label="Размер окна браузера по горизонтали:" description="В пикселях.
           Для использования следует снять галочку с параметра Развернуть браузер."
           defaultValue="1920"/>
-    <Text name="windowsizeH" label="Размер окна браузера по вретикали:" description="В пикселях.
+    <Text name="windowsizeH" label="Размер окна браузера по вертикали:" description="В пикселях.
           Для использования следует снять галочку с параметра Развернуть браузер."
           defaultValue="1080"/>
-    <Text name="addExtension" label="Расширение браузера Chrome (плагин)" description="Полный к файлу в формате .crx с разделителем / " defaultValue=""/>      
+    <Text name="addExtension" label="Расширение браузера Chrome (плагин)" description="Полный к файлу в формате .crx с разделителем / " defaultValue=""/>
+    <Hidden name="databaseHost" defaultValue="127.0.0.1"/>
+    <Hidden name="databaseName" defaultValue="mydb"/>
+    <Hidden name="databaseUser" defaultValue="postgres"/>
+    <Hidden name="databasePassword" defaultValue="postgres"/>      
 </Properties>
