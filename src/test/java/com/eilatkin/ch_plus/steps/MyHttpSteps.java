@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Component
 @Slf4j
-public class CustomHttpSteps extends AbstractSteps {
+public class MyHttpSteps extends AbstractSteps {
 
     private final String applicationUrl = System.getProperty("applicationUrl", "http://127.0.0.1/");
 

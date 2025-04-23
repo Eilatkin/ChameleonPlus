@@ -22,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.fail;
  */
 @Component
 @Slf4j
-public class CustomSeleniumSteps extends CoreFieldSteps {
+public class MySeleniumSteps extends CoreFieldSteps {
 
     @UIStep
     @TestStep("поле \"${fieldName}\" перезаписано значением  \"${text}\"")

@@ -11,10 +11,10 @@ import ru.ibsqa.chameleon.steps.roles.Value;
 /**
  * Допиливаю фреймворк собственными шагами уровня BDD.
  */
-public class CustomSeleniumStorySteps extends AbstractSteps {
+public class MySeleniumStorySteps extends AbstractSteps {
 
     @Autowired
-    private CustomSeleniumSteps customSeleniumSteps;
+    private MySeleniumSteps mySeleniumSteps;
 
     @StepDescription(action = "UI->Элементы->Действия->Перезаписать текст в поле новым"
             , parameters = {"field - наименование поля", "text - новый текст"})
@@ -23,7 +23,7 @@ public class CustomSeleniumStorySteps extends AbstractSteps {
             @KeyPress String field,
             @Value String text) {
         flow(() ->
-                customSeleniumSteps.rewriteField(field, text)
+                mySeleniumSteps.rewriteField(field, text)
         );
     }
 
@@ -35,7 +35,7 @@ public class CustomSeleniumStorySteps extends AbstractSteps {
             @Value String state
     ) {
         if (getStepFlow().prepareFlowStep()) {
-            getStepFlow().createBlock(customSeleniumSteps.checkSakuraCheckbox(field, state));
+            getStepFlow().createBlock(mySeleniumSteps.checkSakuraCheckbox(field, state));
         }
     }
 

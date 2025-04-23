@@ -1,6 +1,7 @@
 package com.eilatkin.ch_plus.steps;
 
 import com.browserup.bup.filters.ResponseFilter;
+import com.eilatkin.ch_plus.proxy.MyProxy;
 import org.apache.http.HttpHeaders;
 import io.netty.handler.codec.http.DefaultHttpResponse;
 import io.netty.handler.codec.http.HttpResponse;
@@ -14,25 +15,26 @@ import ru.ibsqa.chameleon.steps.BrowserSteps;
 import ru.ibsqa.chameleon.steps.TestStep;
 import ru.ibsqa.chameleon.steps.UIStep;
 
-import static com.eilatkin.ch_plus.drivers.MyDriverConfigurationAppender.proxy;
-
 import java.util.regex.Pattern;
 
 
 @Component
 @Slf4j
-public class CustomProxySteps extends BrowserSteps {
+public class MyProxySteps extends BrowserSteps {
 
     @Autowired
     private IDriverManager driverManager;
 
     private String originalWindow;
 
+    @Autowired
+    private MyProxy myProxy;
+
 
     @UIStep
     @TestStep("заблокировать запрос")
     public void blockRequestTo(final String url, final int responseCode) {
-        proxy.addRequestFilter((request, contents, messageInfo) -> {
+        myProxy.proxy.addRequestFilter((request, contents, messageInfo) -> {
             if (Pattern.compile(url).matcher(messageInfo.getOriginalUrl()).matches()) {
                 final HttpResponse response = new DefaultHttpResponse(
                         request.getProtocolVersion(),
@@ -50,7 +52,7 @@ public class CustomProxySteps extends BrowserSteps {
     @UIStep
     @TestStep("подменить тело ответа")
     public void overrideContent(final String url, final int responseCode, final String responseBody) {
-       if (!proxy.isStarted()) {
+       if (!myProxy.proxy.isStarted()) {
            log.error("Режим использования Proxy выключен!");
        }
        ResponseFilter filter = (response, contents, messageInfo) -> {
@@ -59,7 +61,6 @@ public class CustomProxySteps extends BrowserSteps {
                 response.setStatus(HttpResponseStatus.valueOf(responseCode));
             }
         };
-        proxy.addResponseFilter(filter);
-//        proxy.addFirstHttpFilterFactory(new ResponseFilterAdapter.FilterSource(filter, 16777216));
+        myProxy.proxy.addResponseFilter(filter);
     }
 }

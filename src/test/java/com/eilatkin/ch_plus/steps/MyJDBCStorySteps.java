@@ -20,10 +20,10 @@ import java.util.Optional;
 /**
  * Шаги с подключением к СУБД уровня BDD.
  */
-public class CustomJDBCStorySteps extends AbstractSteps {
+public class MyJDBCStorySteps extends AbstractSteps {
 
     @Autowired
-    private CustomJDBCSteps customJDBCSteps; // здесь подключаем бин с тестовыми шагами
+    private MyJDBCSteps myJDBCSteps; // здесь подключаем бин с тестовыми шагами
 
     /**
      * Преобразовать List<FieldValueTable> со столбцами field и value в Map
@@ -31,10 +31,10 @@ public class CustomJDBCStorySteps extends AbstractSteps {
      * @param conditions
      * @return
      */
-    private List<CustomJDBCSteps.FindCondition> parseConditions(List<FieldOperatorValueTable> conditions) {
-        List<CustomJDBCSteps.FindCondition> list = new ArrayList<>();
+    private List<MyJDBCSteps.FindCondition> parseConditions(List<FieldOperatorValueTable> conditions) {
+        List<MyJDBCSteps.FindCondition> list = new ArrayList<>();
         for (FieldOperatorValueTable c : conditions) {
-            list.add(CustomJDBCSteps.FindCondition.builder()
+            list.add(MyJDBCSteps.FindCondition.builder()
                     .fieldName(c.getField())
                     .operator(c.getOperator())
                     .value(Optional.ofNullable(c.getValue()).orElse(StringUtils.EMPTY))
@@ -49,7 +49,7 @@ public class CustomJDBCStorySteps extends AbstractSteps {
             @Value String sqlCommand
     ) {
         flow(() ->
-                customJDBCSteps.execSelect(sqlCommand)
+                myJDBCSteps.execSelect(sqlCommand)
         );
     }
 
@@ -59,7 +59,7 @@ public class CustomJDBCStorySteps extends AbstractSteps {
             @Value String sqlCommand
     ) {
         flow(() ->
-                customJDBCSteps.execUpdate(sqlCommand)
+                myJDBCSteps.execUpdate(sqlCommand)
         );
     }
 
@@ -70,7 +70,7 @@ public class CustomJDBCStorySteps extends AbstractSteps {
             @Read("field") @Operator("operator") @Value("value") List<FieldOperatorValueTable> conditions
     ) {
         flow(() ->
-                customJDBCSteps.execSQLandValidateResult(parseConditions(conditions))
+                myJDBCSteps.execSQLandValidateResult(parseConditions(conditions))
         );
     }
 }

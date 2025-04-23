@@ -8,13 +8,13 @@ import ru.ibsqa.chameleon.steps.roles.Value;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class CustomBrowserStorySteps extends AbstractSteps {
+public class MyBrowserStorySteps extends AbstractSteps {
 
     @Autowired
-    private CustomHttpSteps customHttpSteps;
+    private MyHttpSteps myHttpSteps;
 
     @Autowired
-    private CustomBrowserSteps customBrowserSteps;
+    private MyBrowserSteps myBrowserSteps;
 
     @StepDescription(action = "UI->Браузер->Авторизация с помощью токена")
     @Когда("^авторизация с помощью токена пользователя \"([^\"]*)\" с паролем \"([^\"]*)\"$")
@@ -23,7 +23,7 @@ public class CustomBrowserStorySteps extends AbstractSteps {
             @Value String password
     ) {
         flow(() ->
-                customHttpSteps.authenticate(login, password)
+                myHttpSteps.authenticate(login, password)
         );
     }
 
@@ -35,7 +35,7 @@ public class CustomBrowserStorySteps extends AbstractSteps {
     public void checkLogs(
             @Value String text) {
         flow(() ->
-                customBrowserSteps.checkLogs(text)
+                myBrowserSteps.checkLogs(text)
         );
     }
 
@@ -45,7 +45,7 @@ public class CustomBrowserStorySteps extends AbstractSteps {
     public void collectLogs(
             @Value String text) {
         flow(() ->
-                customBrowserSteps.collectLogs(text)
+                myBrowserSteps.collectLogs(text)
         );
     }
 
@@ -54,7 +54,7 @@ public class CustomBrowserStorySteps extends AbstractSteps {
     @Когда("^сбросить лог ошибок из консоли браузера$")
     public void dropLogs() {
         flow(() ->
-                customBrowserSteps.dropLogs()
+                myBrowserSteps.dropLogs()
         );
     }
 
@@ -62,7 +62,7 @@ public class CustomBrowserStorySteps extends AbstractSteps {
     @Когда("^открыть новую вкладку браузера$")
     public void openNewTab() {
         flow(() ->
-                customBrowserSteps.openNewTab()
+                myBrowserSteps.openNewTab()
         );
     }
 
@@ -70,7 +70,7 @@ public class CustomBrowserStorySteps extends AbstractSteps {
     @Когда("^закрыть вкладку браузера$")
     public void closeTab() {
         flow(() ->
-                customBrowserSteps.closeTab()
+                myBrowserSteps.closeTab()
         );
     }
 
@@ -80,7 +80,7 @@ public class CustomBrowserStorySteps extends AbstractSteps {
             @Value String fileName
     ) {
         flow(() ->
-                assertTrue(customBrowserSteps.fileIsLoadedWithMatchingName(fileName), "Файл с заданным именем не был загружен")
+                assertTrue(myBrowserSteps.fileIsLoadedWithMatchingName(fileName), "Файл с заданным именем не был загружен")
         );
     }
 }

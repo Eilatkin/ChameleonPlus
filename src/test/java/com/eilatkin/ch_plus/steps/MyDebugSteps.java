@@ -11,7 +11,7 @@ import ru.ibsqa.chameleon.steps.TestStep;
  */
 @Component
 @Slf4j
-public class CustomDebugSteps extends AbstractSteps {
+public class MyDebugSteps extends AbstractSteps {
 
     @TestStep("debug \"${param}\"")
     public void stepDebug(String param) {

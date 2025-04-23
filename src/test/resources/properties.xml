@@ -4,7 +4,7 @@
               defaultValue="false"/>
     <CheckBox name="incognito" label="Запускать браузер в режиме инкогнито" description="Не тестируем, но вдруг пригодится."
               defaultValue="false"/>
-    <CheckBox name="ignore certificate errors" description="SSL самоподписанный сайт иначе не будет открыт."
+    <CheckBox name="ignoreCertificateErrors" description="SSL самоподписанный сайт иначе не будет открыт."
               label="Игнорировать ошибки сертификата" defaultValue="true"/>
     <CheckBox name="headless" description="Запуск браузера без оболочки, скриншоты и настройки размера окна по-прежнему работают."
               label="Headless режим браузера" defaultValue="true"/>
@@ -13,10 +13,10 @@
     <Text name="applicationUrl" defaultValue="http://127.0.0.1/"/>
     <Text name="explicitWait" label="explicitWait, миллисекунд" description="Явное ожидание, миллисекунд. Применять только для стабилизации падающих сценариев." defaultValue="300"/>
     <Text name="maxWait" label="maxWait, секунд" description="Максимальное ожидание загрузки элементов, секунд." defaultValue="5"/>
-    <Text name="windowsizeW" label="Размер окна браузера по горизонтали:" description="В пикселях.
+    <Text name="windowSizeW" label="Размер окна браузера по горизонтали:" description="В пикселях.
           Для использования следует снять галочку с параметра Развернуть браузер."
           defaultValue="1920"/>
-    <Text name="windowsizeH" label="Размер окна браузера по вертикали:" description="В пикселях.
+    <Text name="windowSizeH" label="Размер окна браузера по вертикали:" description="В пикселях.
           Для использования следует снять галочку с параметра Развернуть браузер."
           defaultValue="1080"/>
     <Text name="addExtension" label="Расширение браузера Chrome (плагин)" description="Полный к файлу в формате .crx с разделителем / " defaultValue=""/>

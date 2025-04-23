@@ -13,6 +13,6 @@ import org.springframework.test.context.support.DependencyInjectionTestExecution
 @CucumberContextConfiguration
 @ContextConfiguration("classpath:spring.xml")
 @TestExecutionListeners(inheritListeners = false, listeners = {DependencyInjectionTestExecutionListener.class})
-@ExcludeTags("IGNORE")
+@ExcludeTags({"IGNORE","NESTED"})
 public class TestRunner {
 }

@@ -21,7 +21,7 @@ import static org.openqa.selenium.logging.LogType.BROWSER;
 
 @Component
 @Slf4j
-public class CustomBrowserSteps extends BrowserSteps {
+public class MyBrowserSteps extends BrowserSteps {
 
     @Autowired
     private IDriverManager driverManager;

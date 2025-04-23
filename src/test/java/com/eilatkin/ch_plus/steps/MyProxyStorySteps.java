@@ -11,10 +11,10 @@ import ru.ibsqa.chameleon.steps.StepDescription;
 import ru.ibsqa.chameleon.steps.roles.Value;
 
 
-public class CustomProxyStorySteps extends AbstractSteps {
+public class MyProxyStorySteps extends AbstractSteps {
 
     @Autowired
-    private CustomProxySteps customProxySteps;
+    private MyProxySteps myProxySteps;
 
     @DocStringType(contentType = "json")
     public JsonNode json(String json) throws JsonProcessingException {
@@ -28,7 +28,7 @@ public class CustomProxyStorySteps extends AbstractSteps {
             @Value String responseCode
     ) {
         flow(() ->
-                customProxySteps.blockRequestTo(url, Integer.parseInt(responseCode))
+                myProxySteps.blockRequestTo(url, Integer.parseInt(responseCode))
         );
     }
 
@@ -40,7 +40,7 @@ public class CustomProxyStorySteps extends AbstractSteps {
             @Value JsonNode responseBody
     ) {
         flow(() ->
-                customProxySteps.overrideContent(url, Integer.parseInt(responseCode), String.valueOf(responseBody))
+                myProxySteps.overrideContent(url, Integer.parseInt(responseCode), String.valueOf(responseBody))
         );
     }
 

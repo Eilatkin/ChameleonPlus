@@ -22,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 @Component
 @Slf4j
-public class CustomJDBCSteps extends AbstractSteps {
+public class MyJDBCSteps extends AbstractSteps {
 
     private static Connection connection;
     private static ResultSet results;
