@@ -59,7 +59,7 @@ public class MyBrowserSteps extends BrowserSteps {
         for(LogEntry Log : Logs) {
             ErrLog.append(Log);
         }
-        log.warn("Проигнорированы следующие ошибки консоли браузера: " + ErrLog);
+        if (ErrLog.length()!=0) log.warn("Проигнорированы следующие ошибки консоли браузера: {}", ErrLog);
     }
 
     @UIStep

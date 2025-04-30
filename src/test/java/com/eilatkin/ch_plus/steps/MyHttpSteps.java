@@ -11,7 +11,6 @@ import org.springframework.stereotype.Component;
 import ru.ibsqa.chameleon.selenium.driver.IDriverManager;
 import ru.ibsqa.chameleon.steps.AbstractSteps;
 import ru.ibsqa.chameleon.steps.TestStep;
-import ru.ibsqa.chameleon.steps.UIStep;
 import java.lang.String;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -20,12 +19,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @Slf4j
 public class MyHttpSteps extends AbstractSteps {
 
-    private final String applicationUrl = System.getProperty("applicationUrl", "http://127.0.0.1/");
+    private final String applicationUrl = System.getProperty("applicationUrl");
 
     @Autowired
     private IDriverManager driverManager;
 
-    @UIStep
     @TestStep("произведена авторизация с помощью токена пользователя \"${login}\" с паролем \"${password}\"")
     public void authenticate(String login, String password) {
 
@@ -44,4 +42,22 @@ public class MyHttpSteps extends AbstractSteps {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("localStorage.setItem(arguments[0],arguments[1])","token",token);
     }
+
+    public void reauthenticateAndClearLocalStorage(String login, String password) {
+        WebDriver driver = driverManager.getLastDriver();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("localStorage.clear()");
+
+        authenticate(login, password);
+    }
+
+    public void deauthenticate() {
+        WebDriver driver = driverManager.getLastDriver();
+
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("localStorage.clear()");
+
+        driver.navigate().refresh();
+    }
+
 }

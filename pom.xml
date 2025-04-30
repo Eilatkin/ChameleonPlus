@@ -18,9 +18,11 @@
 
     <properties>
         <datagenerator.version>1.2.0</datagenerator.version>
-        <testit-adapter.version>2.3.4</testit-adapter.version>
+        <testit-adapter.version>2.4.3</testit-adapter.version>
         <postgresql.version>42.7.4</postgresql.version>
         <browserup.version>2.1.2</browserup.version>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
     </properties>
 
     <repositories>
@@ -88,6 +90,10 @@
             <groupId>io.rest-assured</groupId>
             <artifactId>json-path</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>ru.yandex.qatools.ashot</groupId>
+            <artifactId>ashot</artifactId>
         </dependency>
         <dependency>
             <groupId>org.postgresql</groupId>

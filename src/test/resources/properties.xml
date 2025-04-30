@@ -23,5 +23,8 @@
     <Hidden name="databaseHost" defaultValue="127.0.0.1"/>
     <Hidden name="databaseName" defaultValue="mydb"/>
     <Hidden name="databaseUser" defaultValue="postgres"/>
-    <Hidden name="databasePassword" defaultValue="postgres"/>      
+    <Hidden name="databasePassword" defaultValue="postgres"/>
+    <Hidden name="allowedDiff" defaultValue="1"/>
+    <Hidden name="screenshots4TMS" defaultValue="true"/>
+    <Hidden name="reporterUrl4TMS" defaultValue="http://statictestreports.my.lan/"/>
 </Properties>

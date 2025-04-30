@@ -27,6 +27,25 @@ public class MyBrowserStorySteps extends AbstractSteps {
         );
     }
 
+    @StepDescription(action = "UI->Браузер->Перелогиниться и сбросить localStorage")
+    @Когда("^сбросить localStorage и авторизация с помощью токена пользователя \"([^\"]*)\" с паролем \"([^\"]*)\"$")
+    public void reauthenticateAndClearLocalStorage(
+            @Value String login,
+            @Value String password
+    ) {
+        flow(() ->
+                myHttpSteps.reauthenticateAndClearLocalStorage(login, password)
+        );
+    }
+
+    @StepDescription(action = "UI->Браузер->Разлогиниться и сбросить localStorage")
+    @Когда("^сбросить localStorage и разлогиниться$")
+    public void deauthenticate() {
+        flow(() ->
+                myHttpSteps.deauthenticate()
+        );
+    }
+
     // шаги для проверки консоли браузера на ошибки, чаще всего следует искать по их критичности - "SEVERE"
     // запрос с пустым текстом ошибки - будет искать любые
     @StepDescription(action = "UI->Браузер->Проверить консоль браузера на ошибку"
